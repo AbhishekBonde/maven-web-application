@@ -18,7 +18,7 @@
 
     <properties>
         <jdk.version>1.8</jdk.version>
-        <spring.version>5.3.36</spring.version> <!-- Latest stable Spring 5 -->
+        <spring.version>5.3.36</spring.version>
         <junit.version>4.13.2</junit.version>
         <slf4j.version>1.7.36</slf4j.version>
         <logback.version>1.2.13</logback.version>
@@ -27,7 +27,6 @@
     </properties>
 
     <dependencies>
-
         <!-- JSON -->
         <dependency>
             <groupId>org.json</groupId>
@@ -35,14 +34,13 @@
             <version>20240303</version>
         </dependency>
 
-        <!-- Test dependencies -->
+        <!-- Testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -50,7 +48,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Servlet API (only once, provided by container) -->
+        <!-- Servlet API -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -58,7 +56,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Spring dependencies -->
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -80,7 +78,7 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- Logging (Logback + SLF4J instead of old Log4j) -->
+        <!-- Logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -91,7 +89,6 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-
     </dependencies>
 
     <distributionManagement>
@@ -121,32 +118,3 @@
                     <target>${jdk.version}</target>
                 </configuration>
             </plugin>
-
-            <!-- Jetty plugin (updated) -->
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>11.0.17</version>
-                <configuration>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <webApp>
-                        <contextPath>/maven-web-application</contextPath>
-                    </webApp>
-                </configuration>
-            </plugin>
-
-            <!-- Eclipse integration -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.10</version>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                    <wtpversion>2.0</wtpversion>
-                    <wtpContextName>maven-web-application</wtpContextName>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-</project>
